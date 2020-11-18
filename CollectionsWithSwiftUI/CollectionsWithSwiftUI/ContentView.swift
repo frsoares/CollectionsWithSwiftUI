@@ -7,57 +7,6 @@
 
 import SwiftUI
 
-struct Item: Identifiable {
-    let id: String
-    let name: String
-    let imageName: Image
-}
-
-struct ItemCell: View {
-    let item: Item
-    var body: some View {
-        VStack {
-            Spacer()
-            item.imageName
-                .resizable()
-                .frame(maxWidth: 30, maxHeight: 90)
-                .scaledToFit()
-                .padding()
-                .background(Color.white)
-                .cornerRadius(5)
-            Text(item.name)
-                .fontWeight(.semibold)
-                .padding([.leading, .trailing, .bottom], 5)
-            Spacer()
-        }
-    }
-}
-
-struct CollectionView: View {
-    @State var items: [Item]
-    var title: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.title)
-                .fontWeight(.black)
-                .padding([.leading], 10)
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(items) {
-                        ItemCell(item: $0)
-                            .frame(width: 140, height: 100)
-                            .background(Color.yellow)
-                            .cornerRadius(5)
-                            .padding(10)
-                    }
-                }
-            }
-        }
-    }
-}
-
 
 struct ContentView: View {
     var body: some View {
